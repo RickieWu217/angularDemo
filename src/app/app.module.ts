@@ -1,6 +1,6 @@
 import { ShareModule } from './share/share.module';
 import { LoginModule } from './login/login.module';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from './_service/local-storage.service';
 import { LoginService } from './login/login.service';
 import { PagesModule } from './pages/pages.module';
 

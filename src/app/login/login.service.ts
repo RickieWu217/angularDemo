@@ -12,14 +12,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of,Subject  } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import 'rxjs/add/operator/map';
 import { User } from '../models/user';
 import { AppConfig } from '../app.config';
-
-
 
 @Injectable()
 export class LoginService {
@@ -35,6 +32,7 @@ export class LoginService {
     let password = loginData.password.trim();
     return this.http.post<Response>(this.appConfig.apiUrl + '/users/authenticate', { username: username, password: password });
   }
+
   login(loginData): Observable<boolean> {
     return this.loginServer(loginData)
       .pipe(
@@ -57,6 +55,7 @@ export class LoginService {
             return of(false);
           }));
   }
+
   logout() {
     this.loginStatus.next(false);
     this.currentUser.next(null);
